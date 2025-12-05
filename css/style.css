@@ -64,13 +64,13 @@ body {
   height: 22px;
   left: 2px;
   top: 2px;
-  background-color: #f5e97a;
+  background-color: #ffff;
   border-radius: 50px;
   transition: 0.3s;
 }
 
 .switch input:checked + .slider {
-  background-color: #121212;
+  background-color: #878787;
 }
 
 .switch input:checked + .slider:before {
@@ -191,6 +191,10 @@ body {
 
 .dark .btnOpiniao:hover {
   background: #d4c86a;
+}
+
+.dark .switch-label {
+  color: #ffffff;
 }
 
 /* MODO DALTONISMO */
