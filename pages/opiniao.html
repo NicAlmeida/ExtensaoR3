@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>R3 - Regra de 3 Simples</title>
-
-    <link rel="stylesheet" href="./css/style.css" />
+    <script src="../javascript/duvidas.js" defer></script>
     <script src="./javascript/script.js" defer></script>
+    <link rel="icon" href="../icons/Vector16.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/opiniao.css" />
   </head>
 
   <body>
     <div id="tela">
       <header class="cabecalho">
-        <img class="logo" src="./icons/Vector48.png" alt="logo r3" />
+        <a href="../index.html">
+          <img class="logo" src="../icons/Vector48.png" alt="logo r3" />
+        </a>
 
         <div class="switches">
           <label class="switch-label">
@@ -33,7 +36,7 @@
         </div>
       </header>
 
-      <h1 class="titulo">R3</h1>
+      <h3 class="titulo">Conte mais sobre sua experiência</h3>
 
       <textarea
         class="inputTexto"
@@ -42,9 +45,50 @@
 
       <button class="btnEnviar">Enviar</button>
 
+      <!-- Dúvidas Frequentes (Accordion) -->
+      <section class="duvidas">
+        <h2 class="duvidasTitulo">Dúvidas Frequentes</h2>
+        <div class="accordion">
+          <div class="item">
+            <button class="accordion-button">Como usar a Regra de 3?</button>
+            <div class="accordion-content">
+              <p>
+                A Regra de 3 é usada para encontrar valores desconhecidos quando
+                há uma relação de proporcionalidade entre 3 valores. Você
+                precisa de 3 valores conhecidos para calcular o 4º.
+              </p>
+            </div>
+          </div>
+
+          <div class="item">
+            <button class="accordion-button">O que é Modo Escuro?</button>
+            <div class="accordion-content">
+              <p>
+                O Modo Escuro é um modo de exibição que altera as cores do fundo
+                e do texto para tons mais escuros, proporcionando uma
+                experiência mais confortável para os olhos em ambientes com
+                pouca luz.
+              </p>
+            </div>
+          </div>
+
+          <div class="item">
+            <button class="accordion-button">Como ativar o Daltonismo?</button>
+            <div class="accordion-content">
+              <p>
+                O modo Daltonismo adapta as cores da página para torná-las mais
+                acessíveis para pessoas com deficiência de percepção de cores,
+                ajustando as paletas de cores para torná-las mais visíveis e
+                compreensíveis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer class="footer">
-        <a href="/" class="home-icon">
-          <img src="./icons/home-icon.png" alt="Home" />
+        <a href="../index.html" class="home-icon">
+          <img src="../icons/home-icon.png" alt="Home" />
         </a>
       </footer>
     </div>
