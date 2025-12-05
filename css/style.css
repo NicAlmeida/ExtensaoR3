@@ -150,3 +150,103 @@ body {
   background-color: #878787;
   cursor: pointer;
 }
+
+/* MODO ESCURO*/
+.dark {
+  background: #121212;
+  color: #f5e97a;
+}
+
+.dark .titulo {
+  color: #f5e97a;
+}
+
+.dark .campo {
+  background: #ffffff;
+  border-color: #f5e97a;
+  color: #121212;
+}
+
+.dark .campo::placeholder {
+  color: #878787;
+}
+
+.dark .seta {
+  color: #f5e97a;
+}
+
+.dark .btnCalcular {
+  background: #f5e97a;
+  color: #121212;
+}
+
+.dark .btnCalcular:hover {
+  background: #d4c86a;
+}
+
+.dark .btnOpiniao {
+  background: #f5e97a;
+  color: #121212;
+}
+
+.dark .btnOpiniao:hover {
+  background: #d4c86a;
+}
+
+/* MODO DALTONISMO */
+.daltonismo {
+  background: #ffff;
+  color: #878787;
+}
+
+.daltonismo .titulo {
+  color: #878787;
+}
+
+.daltonismo .campo {
+  background: #ffff;
+  border-color: #878787;
+  color: #878787;
+}
+
+.daltonismo .campo::placeholder {
+  color: #878787;
+}
+
+.daltonismo .seta {
+  color: #878787;
+}
+
+.daltonismo .btnCalcular {
+  background: #bdbdbd;
+  color: #ffff;
+}
+
+.daltonismo .btnCalcular:hover {
+  background: #878787;
+}
+
+.daltonismo .btnOpiniao {
+  background: #bdbdbd;
+  color: #ffff;
+}
+
+.daltonismo .btnOpiniao:hover {
+  background: #878787;
+}
+
+.daltonismo .switch-label {
+  color: #121212;
+}
+
+.daltonismo .slider {
+  background-color: #878787;
+}
+
+.daltonismo .switch input:checked + .slider {
+  background-color: #878787;
+}
+
+.daltonismo .logo {
+  filter: none;
+}
