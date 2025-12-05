@@ -68,18 +68,19 @@ body {
   height: 22px;
   left: 2px;
   top: 2px;
-  background-color: #f5e97a;
+  background-color: #ffff;
   border-radius: 50px;
   transition: 0.3s;
 }
 
 .switch input:checked + .slider {
-  background-color: #121212;
+  background-color: #878787;
 }
 
 .switch input:checked + .slider:before {
   transform: translateX(29px);
 }
+
 /* TÍTULO */
 .titulo {
   margin-top: 20px;
@@ -181,4 +182,116 @@ body {
 
 .home-icon:hover {
   cursor: pointer;
+}
+
+/* MODO ESCURO */
+.dark {
+  background: #121212;
+  color: #f5e97a;
+}
+
+.dark .titulo {
+  color: #f5e97a;
+}
+
+.dark .inputTexto {
+  background: #121212;
+  border-color: #f5e97a;
+  color: #f5e97a;
+}
+
+.dark .inputTexto::placeholder {
+  color: #f5e97a;
+}
+
+.dark .btnEnviar {
+  background: #f5e97a;
+  color: #121212;
+}
+
+.dark .btnEnviar:hover {
+  background: #d4c86a;
+}
+
+.dark .accordion-button {
+  background-color: #f5e97a;
+  color: #121212;
+}
+
+.dark .accordion-button:hover {
+  background-color: #d4c86a;
+}
+
+.dark .accordion-content {
+  background-color: #d4c86a;
+  color: #121212;
+}
+
+/* MODO DALTONISMO */
+.daltonismo {
+  background: #ffff;
+  color: #878787;
+}
+
+.daltonismo .titulo {
+  color: #878787;
+}
+
+.daltonismo .inputTexto {
+  background: #ffff;
+  border-color: #878787;
+  color: #878787;
+}
+
+.daltonismo .inputTexto::placeholder {
+  color: #878787;
+}
+
+.daltonismo .btnEnviar {
+  background: #bdbdbd;
+  color: #ffff;
+}
+
+.daltonismo .btnEnviar:hover {
+  background: #878787;
+}
+
+.daltonismo .accordion-button {
+  background-color: #878787;
+  color: #ffff;
+}
+
+.daltonismo .accordion-button:hover {
+  background-color: #666;
+}
+
+.daltonismo .accordion-content {
+  background-color: #666;
+  color: #fff;
+}
+
+.daltonismo .slider {
+  color: #121212;
+}
+
+.dark .slider {
+  background-color: #878787;
+}
+
+.daltonismo .switch input:checked + .slider,
+.dark .switch input:checked + .slider {
+  background-color: #878787;
+}
+
+.daltonismo .switch input:checked + .slider:before,
+.dark .switch input:checked + .slider:before {
+  background-color: #ffff;
+}
+
+.dark .switch-label {
+  color: #ffff;
+}
+
+.daltonismo .switch-label {
+  color: #121212;
 }
