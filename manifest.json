@@ -1,0 +1,20 @@
+{
+  "name": "Regra de 3 Simples",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Esta extensão serve para fazer cálculo de regra de 3",
+  "action": {
+    "default_popup": "index.html",
+
+    "default_icon": {
+      "16": "icons/Vector16.png",
+      "48": "icons/Vector48.png",
+      "128": "icons/Vector128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/Vector16.png",
+    "48": "icons/Vector48.png",
+    "128": "icons/Vector128.png"
+  }
+}
