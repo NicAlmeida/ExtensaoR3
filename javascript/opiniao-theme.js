@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!toggleEscuro.checked && !toggleDaltonismo.checked) {
         const labels = document.querySelectorAll(".switch-label");
         labels.forEach((label) => {
-          label.style.color = "white";
+          label.style.color = "black";
         });
       }
     } catch (err) {
