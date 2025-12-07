@@ -2,12 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleEscuro = document.getElementById("toggleEscuro");
   const toggleDaltonismo = document.getElementById("toggleDaltonismo");
   const logo = document.getElementById("logoSite");
+  const iconHome = document.getElementById("iconHome");
 
   const LOGOS = {
     normal: "../icons/Vector48.png",
     dark: "../icons/Vector48_dark.png",
     dalt: "../icons/Vector48_dalt.png",
     dark_dalt: "../icons/Vector48_dark_dalt.png",
+  };
+
+  const ICONES_HOME = {
+    normal: "../icons/home.png",
+    dark: "../icons/home-icon-dark.png",
+    dalt: "../icons/home-icon-dalt.png",
+    dark_dalt: "../icons/home-dark-dalt.png",
   };
 
   function setLogoFor(escuro, dalt) {
@@ -29,15 +37,27 @@ document.addEventListener("DOMContentLoaded", () => {
         logo.onerror = null;
       }
     };
+
     if (candidates.length) {
       logo.src = candidates[0];
     }
   }
 
-  function atualizarLogo() {
+  function setIconHomeFor(escuro, dalt) {
+    if (!iconHome) return;
+
+    if (escuro && dalt) iconHome.src = ICONES_HOME.dark_dalt;
+    else if (escuro) iconHome.src = ICONES_HOME.dark;
+    else if (dalt) iconHome.src = ICONES_HOME.dalt;
+    else iconHome.src = ICONES_HOME.normal;
+  }
+
+  function atualizarIcones() {
     const escuroAtivo = document.body.classList.contains("dark");
     const daltAtivo = document.body.classList.contains("daltonismo");
+
     setLogoFor(escuroAtivo, daltAtivo);
+    setIconHomeFor(escuroAtivo, daltAtivo);
   }
 
   function setModoEscuro(ativar) {
@@ -45,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem("tema", ativar ? "escuro" : "claro");
     } catch (e) {}
-    atualizarLogo();
+    atualizarIcones();
   }
 
   function setModoDaltonismo(ativar) {
@@ -53,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem("modoDaltonismo", ativar ? "ativo" : "desativado");
     } catch (e) {}
-    atualizarLogo();
+    atualizarIcones();
   }
 
   (function carregarPreferencias() {
@@ -69,23 +89,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (toggleEscuro) toggleEscuro.checked = escuro;
       if (toggleDaltonismo) toggleDaltonismo.checked = dalt;
-      if (toggleEscuro.checked && toggleDaltonismo.checked) {
-        const labels = document.querySelectorAll(".switch-label");
+
+      const labels = document.querySelectorAll(".switch-label");
+
+      if ((escuro && dalt) || (!escuro && !dalt)) {
         labels.forEach((label) => {
           label.style.color = "black";
         });
       }
-      if (!toggleEscuro.checked && !toggleDaltonismo.checked) {
-        const labels = document.querySelectorAll(".switch-label");
-        labels.forEach((label) => {
-          label.style.color = "black";
-        });
-      }
+
+      const homeIcon = document.getElementById("iconHome");
+      homeIcon.src = icons.home;
+
+      setIconHomeFor(escuro, dalt);
     } catch (err) {
       console.warn("Não foi possível carregar preferências:", err);
     }
 
-    atualizarLogo();
+    atualizarIcones();
   })();
 
   if (toggleEscuro) {
@@ -101,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.__opiniaoTheme = {
-    atualizarLogo,
+    atualizarIcones,
     setModoEscuro,
     setModoDaltonismo,
   };
