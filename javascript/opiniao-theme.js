@@ -12,15 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const ICONES_HOME = {
-    normal: "../icons/home.png",
+    normal: "../icons/home-icon.png",
     dark: "../icons/home-icon-dark.png",
     dalt: "../icons/home-icon-dalt.png",
-    dark_dalt: "../icons/home-dark-dalt.png",
+    dark_dalt: "../icons/home-icon.png",
   };
 
   function setLogoFor(escuro, dalt) {
     if (!logo) return;
-
     const candidates = [];
     if (escuro && dalt)
       candidates.push(LOGOS.dark_dalt, LOGOS.dalt, LOGOS.dark, LOGOS.normal);
@@ -29,60 +28,53 @@ document.addEventListener("DOMContentLoaded", () => {
     else candidates.push(LOGOS.normal);
 
     let i = 0;
+    logo.onerror = null;
     logo.onerror = function () {
       i++;
-      if (i < candidates.length) {
-        logo.src = candidates[i];
-      } else {
-        logo.onerror = null;
-      }
+      if (i < candidates.length) logo.src = candidates[i];
+      else logo.onerror = null;
     };
-
-    if (candidates.length) {
-      logo.src = candidates[0];
-    }
+    if (candidates.length) logo.src = candidates[0];
   }
 
   function setIconHomeFor(escuro, dalt) {
     if (!iconHome) return;
-
     if (escuro && dalt) iconHome.src = ICONES_HOME.dark_dalt;
     else if (escuro) iconHome.src = ICONES_HOME.dark;
     else if (dalt) iconHome.src = ICONES_HOME.dalt;
     else iconHome.src = ICONES_HOME.normal;
   }
 
-  function atualizarIcones() {
-    const escuroAtivo = document.body.classList.contains("dark");
-    const daltAtivo = document.body.classList.contains("daltonismo");
-
-    setLogoFor(escuroAtivo, daltAtivo);
-    setIconHomeFor(escuroAtivo, daltAtivo);
-  }
-
   function setModoEscuro(ativar) {
     document.body.classList.toggle("dark", ativar);
+    const daltAtivo = document.body.classList.contains("daltonismo");
     try {
       localStorage.setItem("tema", ativar ? "escuro" : "claro");
-    } catch (e) {}
-    atualizarIcones();
+      setLogoFor(ativar, daltAtivo);
+      setIconHomeFor(ativar, daltAtivo);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   function setModoDaltonismo(ativar) {
     document.body.classList.toggle("daltonismo", ativar);
+    const escuroAtivo = document.body.classList.contains("dark");
     try {
       localStorage.setItem("modoDaltonismo", ativar ? "ativo" : "desativado");
-    } catch (e) {}
-    atualizarIcones();
+      setLogoFor(escuroAtivo, ativar);
+      setIconHomeFor(escuroAtivo, ativar);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   (function carregarPreferencias() {
     try {
       const tema = localStorage.getItem("tema");
-      const modoDaltonismo = localStorage.getItem("modoDaltonismo");
-
+      const modoDalt = localStorage.getItem("modoDaltonismo");
       const escuro = tema === "escuro";
-      const dalt = modoDaltonismo === "ativo";
+      const dalt = modoDalt === "ativo";
 
       document.body.classList.toggle("dark", escuro);
       document.body.classList.toggle("daltonismo", dalt);
@@ -91,22 +83,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (toggleDaltonismo) toggleDaltonismo.checked = dalt;
 
       const labels = document.querySelectorAll(".switch-label");
-
       if ((escuro && dalt) || (!escuro && !dalt)) {
         labels.forEach((label) => {
           label.style.color = "black";
         });
       }
 
-      const homeIcon = document.getElementById("iconHome");
-      homeIcon.src = icons.home;
-
+      setLogoFor(escuro, dalt);
       setIconHomeFor(escuro, dalt);
     } catch (err) {
-      console.warn("Não foi possível carregar preferências:", err);
+      console.warn(err);
     }
-
-    atualizarIcones();
   })();
 
   if (toggleEscuro) {
@@ -121,9 +108,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  window.__opiniaoTheme = {
-    atualizarIcones,
-    setModoEscuro,
-    setModoDaltonismo,
-  };
+  window.__opiniaoTheme = { setModoEscuro, setModoDaltonismo };
 });

@@ -6,7 +6,7 @@ body {
   padding: 0;
   text-align: center;
   width: 400px;
-  height: 600px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,14 +14,16 @@ body {
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
+  padding-bottom: 20px;
 }
 
-/* HEADER */
 .cabecalho {
   display: flex;
   justify-content: space-between;
   padding: 15px 20px;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .switches {
@@ -38,7 +40,6 @@ body {
   margin-left: -180px;
 }
 
-/* TOGGLE SWITCH */
 .switch {
   position: relative;
   width: 55px;
@@ -81,13 +82,11 @@ body {
   transform: translateX(29px);
 }
 
-/* TÍTULO */
 .titulo {
   margin-top: 20px;
   font-size: 26px;
 }
 
-/* TEXTAREA */
 .inputTexto {
   width: 80%;
   height: 150px;
@@ -101,7 +100,6 @@ body {
   resize: none;
 }
 
-/* BOTÃO ENVIAR */
 .btnEnviar {
   margin-top: 50px;
   background: #121212;
@@ -119,7 +117,6 @@ body {
   cursor: pointer;
 }
 
-/* Dúvidas Frequentes (Accordion) */
 .accordion {
   width: 100%;
   margin-top: 30px;
@@ -154,16 +151,14 @@ body {
   display: none;
   font-size: 16px;
   text-align: left;
-}
-
-.accordion-button.active + .accordion-content {
-  display: block;
-  align-items: center;
   width: 72%;
   margin-left: 40px;
 }
 
-/* FOOTER */
+.accordion-button.active + .accordion-content {
+  display: block;
+}
+
 .footer {
   margin-top: 20px;
 }
@@ -184,7 +179,6 @@ body {
   cursor: pointer;
 }
 
-/* MODO ESCURO */
 .dark {
   background: #121212;
   color: #f5e97a;
@@ -223,11 +217,10 @@ body {
 }
 
 .dark .accordion-content {
-  background-color: #d4c86a;
+  background-color: #f5e97a;
   color: #121212;
 }
 
-/* MODO DALTONISMO */
 .daltonismo {
   background: #ffff;
   color: #878787;
@@ -248,7 +241,7 @@ body {
 }
 
 .daltonismo .btnEnviar {
-  background: #bdbdbd;
+  background: #878787;
   color: #ffff;
 }
 
