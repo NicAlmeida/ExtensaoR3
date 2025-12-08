@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleDaltonismo = document.getElementById("toggleDaltonismo");
   const logo = document.getElementById("logoSite");
   const iconHome = document.getElementById("iconHome");
+  const btnEnviar = document.querySelector(".btnEnviar");
+  const inputTexto = document.querySelector(".inputTexto");
 
   const LOGOS = {
     normal: "../icons/Vector48.png",
@@ -105,6 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (toggleDaltonismo) {
     toggleDaltonismo.addEventListener("change", () => {
       setModoDaltonismo(toggleDaltonismo.checked);
+    });
+  }
+
+  if (btnEnviar) {
+    btnEnviar.addEventListener("click", () => {
+      alert("Agradecemos o seu feedback");
+      if (inputTexto) inputTexto.value = "";
     });
   }
 
